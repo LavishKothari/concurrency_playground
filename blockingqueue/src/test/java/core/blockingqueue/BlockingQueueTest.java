@@ -13,40 +13,68 @@ import org.junit.Test;
 
 public class BlockingQueueTest {
 
+	private static final int DEFAULT_OPERATIONS = 50;
+	private static final int DEFAULT_MAX_SLEEP = 500; // ms
+
 	@Test(expected = Test.None.class)
-	public void testConcurrent() throws InterruptedException {
+	public void testConcurrentBlockingQueueSimple() throws InterruptedException {
+		int operations = DEFAULT_OPERATIONS;
+		List<Integer> randomList = getRandomList(operations);
+		BlockingQueue<Integer> bq = new BlockingQueueSimple<Integer>(10);
+		testConcurrentHelper(bq, randomList, operations);
+	}
+
+	@Test(expected = Test.None.class)
+	public void testConcurrentBlockingQueueExtended() throws InterruptedException {
+		int operations = DEFAULT_OPERATIONS;
+		List<Integer> randomList = getRandomList(operations);
+		BlockingQueue<Integer> bq = new BlockingQueueExtended<>(10);
+		testConcurrentHelper(bq, randomList, operations);
+	}
+
+	private <T> void testConcurrentHelper(BlockingQueue<T> bq, List<T> randomList, int operations) {
 		CountDownLatch latch = new CountDownLatch(2);
-		final BlockingQueue<Integer> bq = new BlockingQueue<>(10);
-		List<Integer> randomList = new ArrayList<>();
-		int operations = 50;
-		for (int i = 0; i < operations; i++) {
-			randomList.add(i + 1);
-		}
-		int maxSleep = 500; // ms
-		Runnable insertWorker = new InsertWorker<Integer>(bq, operations, randomList, latch, maxSleep);
-		Runnable removeWorker = new RemoveWorker<Integer>(bq, operations, latch, maxSleep);
+
+		int maxSleep = DEFAULT_MAX_SLEEP; // ms
+		Runnable insertWorker = new InsertWorker<T>(bq, operations, randomList, latch, maxSleep);
+		Runnable removeWorker = new RemoveWorker<T>(bq, operations, latch, maxSleep);
 		Thread t1 = new Thread(insertWorker);
 		Thread t2 = new Thread(removeWorker);
 		t1.start();
 		t2.start();
 		// t1.join();
 		// t2.join();
-		latch.await(operations * maxSleep, TimeUnit.MILLISECONDS);
+		try {
+			latch.await(operations * maxSleep, TimeUnit.MILLISECONDS);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		Assert.assertEquals(0, latch.getCount());
 	}
 
 	@Test(expected = Test.None.class)
-	public void testUsingExecutorService() throws InterruptedException {
+	public void testUsingExecutorServiceSimple() throws InterruptedException {
+		int operations = DEFAULT_OPERATIONS;
+		List<Integer> randomList = getRandomList(operations);
+		final BlockingQueue<Integer> bq = new BlockingQueueSimple<>(10);
+		testUsingExecutorServiceHelper(bq, randomList, operations);
+	}
+
+	@Test(expected = Test.None.class)
+	public void testUsingExecutorServiceExtended() throws InterruptedException {
+		int operations = DEFAULT_OPERATIONS;
+		List<Integer> randomList = getRandomList(operations);
+		BlockingQueue<Integer> bq = new BlockingQueueExtended<>(10);
+		testUsingExecutorServiceHelper(bq, randomList, operations);
+	}
+
+	private <T> void testUsingExecutorServiceHelper(BlockingQueue<T> bq, List<T> randomList, int operations)
+			throws InterruptedException {
 		CountDownLatch latch = new CountDownLatch(6);
-		final BlockingQueue<Integer> bq = new BlockingQueue<>(10);
-		List<Integer> randomList = new ArrayList<>();
-		int operations = 50;
-		for (int i = 0; i < operations; i++) {
-			randomList.add(i + 1);
-		}
-		int maxSleep = 500; // ms
-		Runnable insertWorker = new InsertWorker<Integer>(bq, operations, randomList, latch, maxSleep);
-		Runnable removeWorker = new RemoveWorker<Integer>(bq, operations, latch, maxSleep);
+
+		int maxSleep = DEFAULT_MAX_SLEEP; // ms
+		Runnable insertWorker = new InsertWorker<T>(bq, operations, randomList, latch, maxSleep);
+		Runnable removeWorker = new RemoveWorker<T>(bq, operations, latch, maxSleep);
 
 		ExecutorService executorService = Executors.newFixedThreadPool(6);
 		executorService.submit(removeWorker);
@@ -60,6 +88,14 @@ public class BlockingQueueTest {
 
 		latch.await(operations * maxSleep, TimeUnit.MILLISECONDS);
 		Assert.assertEquals(0, latch.getCount());
+	}
+
+	private List<Integer> getRandomList(int size) {
+		List<Integer> randomList = new ArrayList<>();
+		for (int i = 0; i < size; i++) {
+			randomList.add(i + 1);
+		}
+		return randomList;
 	}
 
 	private static class RemoveWorker<T> implements Runnable {
@@ -91,12 +127,8 @@ public class BlockingQueueTest {
 					e.printStackTrace();
 				}
 				T element;
-				try {
-					element = bq.remove();
-					System.out.println("RemoveWorker got = " + element);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				element = bq.remove();
+				System.out.println("RemoveWorker got = " + element);
 
 			}
 			latch.countDown();
@@ -128,12 +160,8 @@ public class BlockingQueueTest {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				try {
-					bq.add(list.get(i));
-					System.out.println("InsertWorker inserted = " + list.get(i));
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				bq.add(list.get(i));
+				System.out.println("InsertWorker inserted = " + list.get(i));
 
 			}
 			latch.countDown();
