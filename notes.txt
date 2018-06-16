@@ -1,0 +1,25 @@
+When you call wait(timeout), there is not way to differentiate whether the wait returned because of timeout or because of notiff() method
+To know the reason, you need to maintain a common volatile flag between the two threads (which is waiting, and which is expected to notify) and check the state of the volatile flag.
+
+returing from wait doesn't necessarily mean that your current thread got lock over the object. It might be the case that, with your current threads there were several other threads that were waiting for the lock and some other thread got lock, which might make your waiting condition true again.
+so it is always advised to wait in a loop and as soon as wait returns, check again that the waiting condition is false, so you don't need to wait this time.
+
+When writing JUnit tests, you need to make sure that if you are having threads, then exception thrown by thread will not cause test failure.
+to overcome this, you may want to keep a CountDownLatch which is decremented by every time a thread exits successfully without failures/exceptions.
+
+wait() is exactly same as wait(0)
+
+Just by using wait and notify calls, you can't perfectly implement (or I should say that it will be very difficult to perfectly implement) the Blocking queues that wait for specified amount of time and then ignores the insert operation or remove opration.
+For this you need to use locks, and Condition
+the method Condition#awaitNanos(long) is very useful (see its return value, and the meaning of return value when its positive or negative)
+
+
+BlockingQueue
+	put - insert an element into the queue, waiting for indefinitely the space to become available if queue is full
+	take - retrieves and removes the head, waiting indefinitely for an element to become available if queue is empty
+
+	poll - retrieves and removes the head, waiting for specified amount of time if queue is empty
+	offer - inserts the specified element, waiting for specified amount of time if queue is full, return false if insertion was not successful
+
+	add - adds immediately, throws IllegalStateException if queue is full
+	remove - removes the specified element, returns true if element is removed, otherwise returns false
