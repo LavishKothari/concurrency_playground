@@ -9,6 +9,17 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/*
+ * dev-notes:
+ * 
+ * What should be the behavior of expiry-map when keys are reinserted 
+ * and the map already contains this key?
+ * Should the timer of reinserted key be refreshed, 
+ * or should we stick to the timer when the key was inserted for the 
+ * very first time.
+ * 
+ * The current implementation follows the latter approach.
+ */
 public class ExpiryMap<K, V> implements Map<K, V> {
 
 	private final Map<K, V> map;
@@ -88,7 +99,7 @@ public class ExpiryMap<K, V> implements Map<K, V> {
 
 	@Override
 	public void putAll(Map<? extends K, ? extends V> argMap) {
-		scheduledThreadPool.schedule(new Cleaner<K, V>(this, this.keySet()), timeout, timeUnit);
+		scheduledThreadPool.schedule(new Cleaner<K, V>(this, argMap.keySet()), timeout, timeUnit);
 		map.putAll(argMap);
 	}
 
