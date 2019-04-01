@@ -34,20 +34,22 @@ final public class MergeSort {
             this.threshold = threshold;
         }
 
-        private static <T extends Comparable<? super T>> List<T> merge(List<T> list1, List<T> list2) {
-            List<T> result = new ArrayList<>(list1.size() + list2.size());
+        private void merge(List<T> list, int start, int end) {
+            int mid = (start + end) / 2;
+            List<T> result = new ArrayList<>(end - start);
             int i, j;
-            for (i = 0, j = 0; i < list1.size() && j < list2.size(); ) {
-                if (list1.get(i).compareTo(list2.get(j)) <= 0)
-                    result.add(list1.get(i++));
-                else
-                    result.add(list2.get(j++));
+            for (i = start, j = mid; i < mid && j < end; ) {
+                if (list.get(i).compareTo(list.get(j)) <= 0)
+                    result.add(list.get(i++));
+                else result.add(list.get(j++));
             }
-            while (i != list1.size())
-                result.add(list1.get(i++));
-            while (j != list2.size())
-                result.add(list2.get(j++));
-            return result;
+            while (i != mid)
+                result.add(list.get(i++));
+            while (j != end)
+                result.add(list.get(j++));
+            int counter = start;
+            for (int x = 0; x < result.size(); x++)
+                list.set(counter++, result.get(x));
         }
 
         @Override
@@ -60,12 +62,7 @@ final public class MergeSort {
                 leftAction.fork();
                 rightAction.compute();
                 leftAction.join();
-                List<T> merged = merge(list.subList(start, (start + end) / 2),
-                        list.subList((start + end) / 2, end));
-                int counter = 0;
-                for (int i = start; i < end; i++) {
-                    list.set(i, merged.get(counter++));
-                }
+                merge(list, start, end);
             }
         }
     }

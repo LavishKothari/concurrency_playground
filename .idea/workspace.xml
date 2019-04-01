@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8a68fe8-220b-4e43-bce6-c5f0c69b3eb5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blockingqueue/src/test/java/core/blockingqueue/forkjoin/MergeSortTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fork_join_pool/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fork_join_pool/src/test/java/forkjoin/MergeSortTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fork_join_pool/fork_join_pool.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fork_join_pool/fork_join_pool.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fork_join_pool/src/forkjoin/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/fork_join_pool/src/main/java/forkjoin/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fork_join_pool/src/forkjoin/MergeSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/fork_join_pool/src/main/java/forkjoin/MergeSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fork_join_pool/src/main/java/forkjoin/MergeSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/fork_join_pool/src/main/java/forkjoin/MergeSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fork_join_pool/src/test/java/forkjoin/MergeSortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/fork_join_pool/src/test/java/forkjoin/MergeSortTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/fork_join_pool/target/" />
@@ -29,12 +20,13 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/fork_join_pool/src/main/java/forkjoin/Main.java">
+        <entry file="file://$PROJECT_DIR$/fork_join_pool/src/main/java/forkjoin/MergeSort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+            <state relative-caret-position="444">
+              <caret line="52" column="9" lean-forward="true" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#790#791#0" expanded="true" />
+                <element signature="e#855#856#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,9 +48,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/fork_join_pool/pom.xml" />
-        <option value="$PROJECT_DIR$/fork_join_pool/src/main/java/forkjoin/MergeSort.java" />
-        <option value="$PROJECT_DIR$/fork_join_pool/src/test/java/forkjoin/MergeSortTest.java" />
         <option value="$PROJECT_DIR$/fork_join_pool/src/main/java/forkjoin/Main.java" />
+        <option value="$PROJECT_DIR$/fork_join_pool/src/test/java/forkjoin/MergeSortTest.java" />
+        <option value="$PROJECT_DIR$/fork_join_pool/src/main/java/forkjoin/MergeSort.java" />
       </list>
     </option>
   </component>
@@ -153,6 +145,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/fork_join_pool/pom.xml" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -213,21 +206,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MergeSortTest_simpleTest - 2019.04.01 at 21h 34m 07s.xml">
-      <configuration name="MergeSortTest.simpleTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MergeSortTest_simpleTest - 2019.04.01 at 21h 34m 24s.xml">
-      <configuration name="MergeSortTest.simpleTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MergeSortTest_simpleTest - 2019.04.01 at 21h 34m 49s.xml">
-      <configuration name="MergeSortTest.simpleTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MergeSortTest_simpleTest - 2019.04.01 at 21h 35m 04s.xml">
-      <configuration name="MergeSortTest.simpleTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MergeSortTest_simpleTest - 2019.04.01 at 21h 35m 26s.xml">
-      <configuration name="MergeSortTest.simpleTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MergeSortTest_simpleTest - 2019.04.01 at 21h 48m 36s.xml">
       <configuration name="MergeSortTest.simpleTest" configurationId="JUnit" />
     </history-entry>
@@ -243,6 +221,21 @@
     <history-entry file="MergeSortTest_simpleTest - 2019.04.01 at 21h 50m 09s.xml">
       <configuration name="MergeSortTest.simpleTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MergeSortTest_simpleTest - 2019.04.01 at 21h 55m 43s.xml">
+      <configuration name="MergeSortTest.simpleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MergeSortTest_simpleTest - 2019.04.01 at 21h 56m 00s.xml">
+      <configuration name="MergeSortTest.simpleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MergeSortTest_simpleTest - 2019.04.01 at 21h 56m 36s.xml">
+      <configuration name="MergeSortTest.simpleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MergeSortTest_simpleTest - 2019.04.01 at 22h 04m 37s.xml">
+      <configuration name="MergeSortTest.simpleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MergeSortTest_simpleTest - 2019.04.01 at 22h 09m 29s.xml">
+      <configuration name="MergeSortTest.simpleTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-37" width="1920" height="1117" extended-state="6" />
@@ -253,7 +246,7 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947916" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947916" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
@@ -261,7 +254,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.32962963" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32962963" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32962963" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -318,10 +311,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fork_join_pool/src/main/java/forkjoin/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fork_join_pool/src/test/java/forkjoin/MergeSortTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        <state relative-caret-position="529">
+          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -330,17 +333,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fork_join_pool/src/main/java/forkjoin/MergeSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fork_join_pool/src/main/java/forkjoin/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+        <state relative-caret-position="444">
+          <caret line="52" column="9" lean-forward="true" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#790#791#0" expanded="true" />
+            <element signature="e#855#856#0" expanded="true" />
           </folding>
         </state>
       </provider>

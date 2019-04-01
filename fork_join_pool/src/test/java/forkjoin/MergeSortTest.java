@@ -14,7 +14,7 @@ public class MergeSortTest {
     public void simpleTest() {
         List<Integer> list = new ArrayList<>();
 
-        int iterations = 10000;
+        int iterations = 1234567;
         int maxValue = 10;
         for (int i = 0; i < iterations; i++)
             IntStream.rangeClosed(1, maxValue)
