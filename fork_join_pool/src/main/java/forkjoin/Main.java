@@ -54,6 +54,6 @@ public class Main {
     }
 
     private static void doBlackHoleOperation(List<Integer> list) {
-        System.out.println("_______________________________________ "+Collections.max(list));
+        System.out.println("_______________________________________ " + Collections.max(list));
     }
 }
